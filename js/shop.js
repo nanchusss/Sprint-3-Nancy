@@ -36,18 +36,14 @@ function calculateTotal() {
   //acá funcion sumar array.
   // Calculate total price of the cart using the "cartList" array
 
-  for (let i = 0; i < cartList.length; i++) {
-    total += cartList[i].price;
-    //Esto es para el array cart.
-    // for (let i = 0; i < cart.length; i++) {
-    //   if (cart[i].subtotalWithDiscount) {
-    //     total += cart[i].subtotalWithDiscount;
-    //   } else {
-    //     total += cart[i].subtotal;
-    //   }
-    // }
-    console.log(total);
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].subtotalWithDiscount) {
+      total += cart[i].subtotalWithDiscount;
+    } else {
+      total += cart[i].subtotal;
+    }
   }
+  console.log(total);
   return total;
 }
 
@@ -166,38 +162,45 @@ function addToCart(id) {
   // 1. Loop for to the array products to get the item to add to cart
   // // 2. Add found product to the cart array or update its quantity in case it has been added previously.
   //
-  // let indexOfProduct;
-  // //indice del producto
-  // let selection = products.find((product) => product.id == id);
-  // indexOfProduct = cart.findIndex((product) => product.id == id);
-  // if (indexOfProduct == -1) {
-  //   selection.quantity = 1;
-  //   selection.subtotal = selection.price;
-  //   cart.push(selection);
-  //   console.log(`Se ha agregado a la Cart el producto ${selection.name}`);
-  //   console.log(cart);
-  // } else {
-  //   //si ya está en el array sumamos quantity y precio al subtotal por cada iteración.
-  //   cart[indexOfProduct].quantity++;
-  //   console.log(
-  //     `El ${cart[indexOfProduct].name} ha aumentado su cantidad a ${cart[indexOfProduct].quantity}`
-  //   );
-  //   cart[indexOfProduct].subtotal += selection.price;
-  //   //aplicando descuento. Si offer no es undefined, osea que tiene la prop offer y si además
-  //   //la cantidad es mayor o igual entonces aplicamos descuento.
-  //   if (
-  //     (cart[indexOfProduct].id == 1 || cart[indexOfProduct].id == 3) &&
-  //     cart[indexOfProduct].quantity >= cart[indexOfProduct].offer.number
-  //   ) {
-  //     cart[indexOfProduct].subtotalWithDiscount =
-  //       (cart[indexOfProduct].subtotal *
-  //         (100 - cart[indexOfProduct].offer.percent)) /
-  //       100;
-  //     console.log(
-  //       `El producto ${cart[indexOfProduct].name} tiene un precio final de ${cart[indexOfProduct].subtotalWithDiscount}`
-  //     );
-  //   }
-  // }
+
+  let indexOfProduct;
+  //indice del producto
+  let selection = products.find((product) => product.id == id);
+
+  indexOfProduct = cart.findIndex((product) => product.id == id);
+
+  if (indexOfProduct == -1) {
+    selection.quantity = 1;
+    selection.subtotal = selection.price;
+    cart.push(selection);
+    console.log(`Se ha agregado a la Cart el producto ${selection.name}`);
+    console.log(cart);
+  } else {
+    //si ya está en el array sumamos quantity y precio al subtotal por cada iteración.
+
+    cart[indexOfProduct].quantity++;
+
+    console.log(
+      `El ${cart[indexOfProduct].name} ha aumentado su cantidad a ${cart[indexOfProduct].quantity}`
+    );
+    cart[indexOfProduct].subtotal += selection.price;
+
+    //aplicando descuento. Si offer no es undefined, osea que tiene la prop offer y si además
+    //la cantidad es mayor o igual entonces aplicamos descuento.
+
+    if (
+      (cart[indexOfProduct].id == 1 || cart[indexOfProduct].id == 3) &&
+      cart[indexOfProduct].quantity >= cart[indexOfProduct].offer.number
+    ) {
+      cart[indexOfProduct].subtotalWithDiscount =
+        (cart[indexOfProduct].subtotal *
+          (100 - cart[indexOfProduct].offer.percent)) /
+        100;
+      console.log(
+        `El producto ${cart[indexOfProduct].name} tiene un precio final de ${cart[indexOfProduct].subtotalWithDiscount}`
+      );
+    }
+  }
 }
 
 // Exercise 8
