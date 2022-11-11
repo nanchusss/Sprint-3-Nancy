@@ -33,18 +33,18 @@ function validate() {
   //si el campo es menor a 3, si el campo está vacío o si no matchea con la variable letter que establece las letras, entonces consologuea un input erroneo, aumenta el contador de error y demás hace un display del error establecido en el HTML:
 
   if (fName.lenght < 3 || fName.value === "" || !fName.value.match(letter)) {
-    error++;
+    // error++;
     console.log("Invalid Name Input");
     errorName.style.display = "block";
   }
 
   if (fLastN.value === "" || !fLastN.value.match(letter) || fLastN.lenght < 3) {
-    error++;
+    // error++;
     console.log("Invalid LastName input");
     errorLastN.style.display = "block";
   }
   if (fEmail.value == "" || !fEmail.value.match(email) || fEmail.lenght < 3) {
-    error++;
+    // error++;
     console.log("Invalid Email input");
     errorEmail.style.display = "block";
   }
@@ -53,7 +53,7 @@ function validate() {
     !fPassword.value.match(password) ||
     fPassword.lenght < 3
   ) {
-    error++;
+    // error++;
     console.log("Invalid Password");
     errorPassword.style.display = "block";
   }
@@ -65,9 +65,9 @@ function validate() {
     console.log("Invalid Address");
     errorAddress.style.display = "block";
   }
-  if (error >= 1) {
-    alert("Error in Form");
-  } else {
-    alert("Fields completed successfully");
-  }
+  // if (error >= 1) {
+  //   alert("Error in Form");
+  // } else {
+  //   alert("Fields completed successfully");
+  // }
 }
