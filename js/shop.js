@@ -29,6 +29,10 @@ function cleanCart() {
   cart = [];
   total = 0;
   console.log(cartList);
+  // cartTable = [];
+  // precio = 0;
+  // quantity = 0;
+  // let totalT = 0;
 }
 
 // Exercise 3

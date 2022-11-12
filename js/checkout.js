@@ -6,7 +6,7 @@ const password = /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/;
 
 function validate() {
   //Establecemos un contador de errores
-  let error = 0;
+  //let error = 0;
   // Get the input fields. Estos son los input de cada campo que se rellena.
 
   //Traemos las variables que son los inputs.
